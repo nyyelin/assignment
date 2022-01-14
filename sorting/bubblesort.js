@@ -1,4 +1,40 @@
+var number = document.querySelector('.number');
+var html = '';
+var number_array = [];
+number.addEventListener('keyup', function(argument) {
+    var num_value = document.querySelector('.number').value;
+    if (num_value) {
+        for (var i = 1; i <= num_value; i++) {
+                html += `<div class="col-md-4 mt-4">
+                            <input type="number" name="" class="form-control mx-2 get_number${i}">
+                         </div>`;
+            }
 
+            html += `<div class="col-md-4 mt-4">
+                        <button class = 'btn btn-success btn_sort'>Sort</button>
+                     </div>`;
+    } else {
+        html = "";
+    }
+    
+    document.querySelector('.show_num').innerHTML = html;
+
+    var btn_sort = document.querySelector('.show_num .btn_sort');
+    btn_sort.addEventListener('click', function (argument) {
+        for(var i = 1; i <= num_value; i++){
+            var get_number = document.querySelector(".show_num .get_number" + i).value;
+            number_array.push(get_number);
+        }
+        var n = number_array.length;
+        document.write("UnSorted array: \n");
+        printArray(number_array, n);
+
+        // sort
+        bubbleSort(number_array,n);
+        document.write("Sorted array: \n");
+        printArray(number_array, n);
+    })
+})
 function swap(arr, xp, yp)
 {
     var temp = arr[xp];
@@ -24,22 +60,10 @@ function bubbleSort( arr, n)
 }
 
 /* Function to print an array */
-function printArray(arr, size)
+function printArray(arr, length)
 {
     var i;
-    for (i=0; i < size; i++)
+    for (i=0; i < length; i++)
     document.write(arr[i]+ " ");
     document.write("\n");
 }
-
-// Driver program to test above functions
-// var arr = [64, 34, 25, 12, 22, 11, 90];
-
-var arr = [64, 34, 25];
-var n = 3;
-document.write("UnSorted array: \n");
-printArray(arr, n);
-document.write("<br>");
-bubbleSort(arr, n);
-document.write("Sorted array: \n");
-printArray(arr, n);

@@ -1,4 +1,38 @@
-var items = [5,3,7,6,2,9];
+var html = '';
+var number_array = [];
+var btn_add = document.querySelector('.btn_add');
+btn_add.addEventListener('click', function(argument) {
+    var num_value = document.querySelector('.number').value;
+    if (num_value) {
+        for (var i = 1; i <= num_value; i++) {
+                html += `<div class="col-md-4 mt-4">
+                            <input type="number" name="" class="form-control mx-2 get_number${i}">
+                         </div>`;
+            }
+
+            html += `<div class="col-md-4 mt-4">
+                        <button class = 'btn btn-success btn_sort'>Sort</button>
+                     </div>`;
+    } else {
+        html = "";
+    }
+    
+    document.querySelector('.show_num').innerHTML = html;
+
+    var btn_sort = document.querySelector('.show_num .btn_sort');
+    btn_sort.addEventListener('click', function (argument) {
+        for(var i = 1; i <= num_value; i++){
+            var get_number = document.querySelector(".show_num .get_number" + i).value;
+            if (get_number) {
+                number_array.push(parseInt(get_number));
+            }
+        }
+        // first call to quick sort
+        var sortedArray = quickSort(number_array, 0, number_array.length - 1);
+        document.write(sortedArray + "");
+    })
+})
+// var items = [5,3,7,6,2,9];
 function swap(items, leftIndex, rightIndex){
     var temp = items[leftIndex];
     items[leftIndex] = items[rightIndex];
@@ -37,6 +71,3 @@ function quickSort(items, left, right) {
     }
     return items;
 }
-// first call to quick sort
-var sortedArray = quickSort(items, 0, items.length - 1);
-document.write(sortedArray + "");

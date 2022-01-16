@@ -1,3 +1,36 @@
+var html = '';
+var number_array = [];
+var btn_add = document.querySelector('.btn_add');
+btn_add.addEventListener('click', function(argument) {
+    var num_value = document.querySelector('.number').value;
+    if (num_value) {
+        for (var i = 1; i <= num_value; i++) {
+                html += `<div class="col-md-4 mt-4">
+                            <input type="number" name="" class="form-control mx-2 get_number${i}">
+                         </div>`;
+            }
+
+            html += `<div class="col-md-4 mt-4">
+                        <button class = 'btn btn-success btn_sort'>Sort</button>
+                     </div>`;
+    } else {
+        html = "";
+    }
+    
+    document.querySelector('.show_num').innerHTML = html;
+
+    var btn_sort = document.querySelector('.show_num .btn_sort');
+    btn_sort.addEventListener('click', function (argument) {
+        for(var i = 1; i <= num_value; i++){
+            var get_number = document.querySelector(".show_num .get_number" + i).value;
+            number_array.push(parseInt(get_number));
+        }
+        var n = number_array.length;
+        insertionSort(number_array, n);
+        printArray(number_array, n);
+    })
+})
+
 // Javascript program for insertion sort
 
 // Function to sort an array using insertion sort
@@ -27,13 +60,5 @@ function printArray(arr, n)
     let i;
     for (i = 0; i < n; i++)
         document.write(arr[i] + " ");
-    document.write("<br>"); 
+        document.write("<br>"); 
 }
-
-// Driver code 
-    let arr = [12, 11, 13, 5, 6 ];
-    let n = arr.length;
-
-    insertionSort(arr, n);
-    printArray(arr, n);
-// This code is contributed by Mayank Tyagi

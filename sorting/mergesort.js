@@ -1,3 +1,45 @@
+var html = '';
+var number_array = [];
+var btn_add = document.querySelector('.btn_add');
+btn_add.addEventListener('click', function(argument) {
+    var num_value = document.querySelector('.number').value;
+    if (num_value) {
+        for (var i = 1; i <= num_value; i++) {
+                html += `<div class="col-md-4 mt-4">
+                            <input type="number" name="" class="form-control mx-2 get_number${i}">
+                         </div>`;
+            }
+
+            html += `<div class="col-md-4 mt-4">
+                        <button class = 'btn btn-success btn_sort'>Sort</button>
+                     </div>`;
+    } else {
+        html = "";
+    }
+    
+    document.querySelector('.show_num').innerHTML = html;
+
+    var btn_sort = document.querySelector('.show_num .btn_sort');
+    btn_sort.addEventListener('click', function (argument) {
+        for(var i = 1; i <= num_value; i++){
+            var get_number = document.querySelector(".show_num .get_number" + i).value;
+            if (get_number) {
+                number_array.push(parseInt(get_number));
+            }
+        }
+        // var arr = [ 12, 11, 13, 5, 6, 7 ];
+        var arr_size = number_array.length;
+
+        document.write("Given array is <br>");
+        printArray(number_array, arr_size);
+
+        mergeSort(number_array, 0, arr_size - 1);
+
+        document.write("<br>Sorted array is <br>");
+        printArray(number_array, arr_size);
+    })
+})
+
 // JavaScript program for Merge Sort
 // Merges two subarrays of arr[].
 // First subarray is arr[l..m]
@@ -77,16 +119,3 @@ function printArray( A, size)
     for (var i = 0; i < size; i++)
        document.write(  A[i] + " ");
 }
-
-var arr = [ 12, 11, 13, 5, 6, 7 ];
-var arr_size = arr.length;
-
-document.write("Given array is <br>");
-printArray(arr, arr_size);
-
-mergeSort(arr, 0, arr_size - 1);
-
-document.write("<br>Sorted array is <br>");
-printArray(arr, arr_size);
-
-// This code is contributed by SoumikMondal

@@ -1,7 +1,7 @@
-var number = document.querySelector('.number');
 var html = '';
 var number_array = [];
-number.addEventListener('keyup', function(argument) {
+var btn_add = document.querySelector('.btn_add');
+btn_add.addEventListener('click', function(argument) {
     var num_value = document.querySelector('.number').value;
     if (num_value) {
         for (var i = 1; i <= num_value; i++) {
@@ -23,7 +23,9 @@ number.addEventListener('keyup', function(argument) {
     btn_sort.addEventListener('click', function (argument) {
         for(var i = 1; i <= num_value; i++){
             var get_number = document.querySelector(".show_num .get_number" + i).value;
-            number_array.push(get_number);
+            if (get_number) {
+                number_array.push(parseInt(get_number));
+            }
         }
         var n = number_array.length;
         document.write("UnSorted array: \n");

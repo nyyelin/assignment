@@ -32,7 +32,6 @@ btn_add.addEventListener('click', function(argument) {
         document.write(sortedArray + "");
     })
 })
-// var items = [5,3,7,6,2,9];
 function swap(items, leftIndex, rightIndex){
     var temp = items[leftIndex];
     items[leftIndex] = items[rightIndex];

@@ -34,7 +34,7 @@ btn_add.addEventListener('click', function(argument) {
 })
 // Javascript program for modifying Selection Sort
 // so that it becomes stable.
- 
+
 function stableSelectionSort(a, n)
 {
     // Iterate through array elements

@@ -27,14 +27,11 @@ btn_add.addEventListener('click', function(argument) {
                 number_array.push(parseInt(get_number));
             }
         }
-        // var arr = [ 12, 11, 13, 5, 6, 7 ];
         var arr_size = number_array.length;
 
         document.write("Given array is <br>");
         printArray(number_array, arr_size);
-
         mergeSort(number_array, 0, arr_size - 1);
-
         document.write("<br>Sorted array is <br>");
         printArray(number_array, arr_size);
     })
@@ -58,15 +55,14 @@ function merge(arr, l, m, r)
         L[i] = arr[l + i];
     for (var j = 0; j < n2; j++)
         R[j] = arr[m + 1 + j];
-  
+
     // Merge the temp arrays back into arr[l..r]
-  
     // Initial index of first subarray
     var i = 0;
-  
+
     // Initial index of second subarray
     var j = 0;
-  
+
     // Initial index of merged subarray
     var k = l;
   
